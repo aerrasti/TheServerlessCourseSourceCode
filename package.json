@@ -1,0 +1,11 @@
+{
+  "name": "TheServerlessCourseSourceCode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:aerrasti/TheServerlessCourseSourceCode.git",
+  "author": "<aitor@runroom.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^1.55.1"
+  }
+}
