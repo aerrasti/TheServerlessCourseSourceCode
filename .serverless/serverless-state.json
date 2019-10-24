@@ -27,13 +27,16 @@
                     }
                   }
                 ]
+              },
+              "AccelerateConfiguration": {
+                "AccelerationStatus": "Enabled"
               }
             }
           },
-          "HelloWorldLogGroup": {
+          "GettogetherLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/gettogether-dev-helloWorld"
+              "LogGroupName": "/aws/lambda/gettogether-dev-gettogether"
             }
           },
           "IamRoleLambdaExecution": {
@@ -112,40 +115,45 @@
               }
             }
           },
-          "HelloWorldLambdaFunction": {
+          "GettogetherLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/gettogether/dev/1571908516467-2019-10-24T09:15:16.467Z/gettogether.zip"
+                "S3Key": "serverless/gettogether/dev/1571928659159-2019-10-24T14:50:59.159Z/gettogether.zip"
               },
-              "FunctionName": "gettogether-dev-helloWorld",
-              "Handler": "src/functions/helloworld.handler",
+              "FunctionName": "gettogether-dev-gettogether",
+              "Handler": "src/functions/getGetTogethers.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
+                  "GettogetherIamRoleLambdaExecution",
                   "Arn"
                 ]
               },
               "Runtime": "nodejs10.x",
-              "Timeout": 6
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "getTogethersTableName": "dev-gettogethers"
+                }
+              }
             },
             "DependsOn": [
-              "HelloWorldLogGroup",
-              "IamRoleLambdaExecution"
+              "GettogetherIamRoleLambdaExecution",
+              "GettogetherLogGroup"
             ]
           },
-          "HelloWorldLambdaVersionBltESJDWO0H1DgDPl55KbBF3yloAQKZhXSHKB1te4W8": {
+          "GettogetherLambdaVersionA2H08t32kPxnL0rWuwzmvvzsud68vLPmnmjgqgRHy4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "HelloWorldLambdaFunction"
+                "Ref": "GettogetherLambdaFunction"
               },
-              "CodeSha256": "hDcbarBQl1ZLV864GgwvukR7aOGBWfCKdp/3wnWYtCc="
+              "CodeSha256": "95vL7ZoXBDJTStmh4VuNzK0g4MhFqOBFzONBgHrFEqM="
             }
           },
           "ApiGatewayRestApi": {
@@ -174,25 +182,25 @@
               }
             }
           },
-          "ApiGatewayResourceApiHelloworld": {
+          "ApiGatewayResourceApiGetDashtogether": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
                 "Ref": "ApiGatewayResourceApi"
               },
-              "PathPart": "helloworld",
+              "PathPart": "get-together",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayMethodApiHelloworldPost": {
+          "ApiGatewayMethodApiGetDashtogetherGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
-              "HttpMethod": "POST",
+              "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceApiHelloworld"
+                "Ref": "ApiGatewayResourceApiGetDashtogether"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -217,7 +225,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "HelloWorldLambdaFunction",
+                          "GettogetherLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -229,7 +237,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1571908510939": {
+          "ApiGatewayDeployment1571928650939": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -238,15 +246,15 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodApiHelloworldPost"
+              "ApiGatewayMethodApiGetDashtogetherGet"
             ]
           },
-          "HelloWorldLambdaPermissionApiGateway": {
+          "GettogetherLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "HelloWorldLambdaFunction",
+                  "GettogetherLambdaFunction",
                   "Arn"
                 ]
               },
@@ -277,6 +285,100 @@
                 ]
               }
             }
+          },
+          "GettogetherIamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "dev",
+                        "gettogether",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/gettogether-dev-gettogether:*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": "dynamodb:scan",
+                        "Resource": {
+                          "Fn::Sub": "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/dev-gettogethers"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "gettogether",
+                    "dev",
+                    "gettogether",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    "lambdaRole"
+                  ]
+                ]
+              },
+              "ManagedPolicyArns": []
+            }
+          },
+          "GetTogethersTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "dev-gettogethers",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "N"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST"
+            }
           }
         },
         "Outputs": {
@@ -285,10 +387,13 @@
               "Ref": "ServerlessDeploymentBucket"
             }
           },
-          "HelloWorldLambdaFunctionQualifiedArn": {
+          "ServerlessDeploymentBucketAccelerated": {
+            "Value": true
+          },
+          "GettogetherLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloWorldLambdaVersionBltESJDWO0H1DgDPl55KbBF3yloAQKZhXSHKB1te4W8"
+              "Ref": "GettogetherLambdaVersionA2H08t32kPxnL0rWuwzmvvzsud68vLPmnmjgqgRHy4"
             }
           },
           "ServiceEndpoint": {
@@ -331,6 +436,9 @@
                     }
                   }
                 ]
+              },
+              "AccelerateConfiguration": {
+                "AccelerationStatus": "Enabled"
               }
             }
           }
@@ -340,25 +448,45 @@
             "Value": {
               "Ref": "ServerlessDeploymentBucket"
             }
+          },
+          "ServerlessDeploymentBucketAccelerated": {
+            "Value": true
           }
         }
       },
       "vpc": {}
     },
+    "custom": {
+      "defaultRegion": "eu-west-1",
+      "defaultStage": "dev",
+      "getTogethersTableName": "dev-gettogethers"
+    },
+    "plugins": [
+      "serverless-pseudo-parameters",
+      "serverless-iam-roles-per-function"
+    ],
     "pluginsData": {},
     "functions": {
-      "helloWorld": {
-        "handler": "src/functions/helloworld.handler",
+      "gettogether": {
+        "handler": "src/functions/getGetTogethers.handler",
         "events": [
           {
             "http": {
-              "path": "api/helloworld",
-              "method": "post",
+              "path": "api/get-together",
+              "method": "get",
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "gettogether-dev-helloWorld",
+        "iamRoleStatements": [
+          {
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GettogetherIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+          }
+        ],
+        "environment": {
+          "getTogethersTableName": "dev-gettogethers"
+        },
+        "name": "gettogether-dev-gettogether",
         "package": {},
         "memory": 1024,
         "timeout": 6,
@@ -366,12 +494,36 @@
         "vpc": {}
       }
     },
+    "resources": {
+      "Resources": {
+        "GetTogethersTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "dev-gettogethers",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "N"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ],
+            "BillingMode": "PAY_PER_REQUEST"
+          }
+        }
+      },
+      "Outputs": {}
+    },
     "serviceFilename": "serverless.yml",
     "layers": {},
     "artifact": "/home/aitor/serverless/TheServerlessCourseSourceCode/.serverless/gettogether.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/gettogether/dev/1571908516467-2019-10-24T09:15:16.467Z",
+    "artifactDirectoryName": "serverless/gettogether/dev/1571928659159-2019-10-24T14:50:59.159Z",
     "artifact": "gettogether.zip"
   }
 }

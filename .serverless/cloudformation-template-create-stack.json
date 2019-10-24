@@ -13,6 +13,9 @@
               }
             }
           ]
+        },
+        "AccelerateConfiguration": {
+          "AccelerationStatus": "Enabled"
         }
       }
     }
@@ -22,6 +25,9 @@
       "Value": {
         "Ref": "ServerlessDeploymentBucket"
       }
+    },
+    "ServerlessDeploymentBucketAccelerated": {
+      "Value": true
     }
   }
 }
