@@ -105,7 +105,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1571905528031-2019-10-24T08:25:28.031Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1571908516467-2019-10-24T09:15:16.467Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-helloWorld",
         "Handler": "src/functions/helloworld.handler",
@@ -124,14 +124,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "HelloWorldLambdaVersionEfaynA4APbD9qFmj8t44g6AgNBNRGeW5h1VvGmbPDU": {
+    "HelloWorldLambdaVersionBltESJDWO0H1DgDPl55KbBF3yloAQKZhXSHKB1te4W8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloWorldLambdaFunction"
         },
-        "CodeSha256": "osbv94rJP0WdPJ1Vfcv+FpPDxidNK1XLIIijGnvirTQ="
+        "CodeSha256": "hDcbarBQl1ZLV864GgwvukR7aOGBWfCKdp/3wnWYtCc="
       }
     },
     "ApiGatewayRestApi": {
@@ -172,10 +172,10 @@
         }
       }
     },
-    "ApiGatewayMethodApiHelloworldGet": {
+    "ApiGatewayMethodApiHelloworldPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
-        "HttpMethod": "GET",
+        "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
           "Ref": "ApiGatewayResourceApiHelloworld"
@@ -215,7 +215,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1571905521793": {
+    "ApiGatewayDeployment1571908510939": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -224,7 +224,7 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodApiHelloworldGet"
+        "ApiGatewayMethodApiHelloworldPost"
       ]
     },
     "HelloWorldLambdaPermissionApiGateway": {
@@ -274,7 +274,7 @@
     "HelloWorldLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloWorldLambdaVersionEfaynA4APbD9qFmj8t44g6AgNBNRGeW5h1VvGmbPDU"
+        "Ref": "HelloWorldLambdaVersionBltESJDWO0H1DgDPl55KbBF3yloAQKZhXSHKB1te4W8"
       }
     },
     "ServiceEndpoint": {

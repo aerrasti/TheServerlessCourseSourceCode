@@ -12,4 +12,4 @@ functions:
     events: 
       - http:
           path: api/helloworld
-          method: get
+          method: post
