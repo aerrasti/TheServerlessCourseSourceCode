@@ -120,7 +120,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1571990098823-2019-10-25T07:54:58.823Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1571995730977-2019-10-25T09:28:50.977Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-notifyOrganiser",
         "Handler": "src/functions/notifyOrganiser.handler",
@@ -139,14 +139,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "NotifyOrganiserLambdaVersion29dsQIwpES9AXVlNBFIA9A1DKY5xlWfMo7s96sFKY3M": {
+    "NotifyOrganiserLambdaVersion6eOjsqJ7LEjnihpJVolFnl45Af6z2GhvWu5J5z7VJiQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NotifyOrganiserLambdaFunction"
         },
-        "CodeSha256": "ue4QIgjIz2zO8L5mv31CEORjWU//64GjFlwONC/KwpA="
+        "CodeSha256": "yv5GNIq+nRbrZnsCmnPO1SECNN9j2ZwnFxQRySf6tJQ="
       }
     },
     "GettogetherLambdaFunction": {
@@ -156,7 +156,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1571990098823-2019-10-25T07:54:58.823Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1571995730977-2019-10-25T09:28:50.977Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-gettogether",
         "Handler": "src/functions/getGetTogethers.handler",
@@ -171,7 +171,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "getTogethersTableName": "dev-gettogethers"
+            "getTogethersTableName": "dev-gettogethers",
+            "getTogethersTablePath": "/gettogethers/dev/secureTableName"
           }
         }
       },
@@ -180,14 +181,14 @@
         "GettogetherLogGroup"
       ]
     },
-    "GettogetherLambdaVersionNOT6GpclvR86njqr4Po06SGB7mBTAv7b3zm9Tg9SpY": {
+    "GettogetherLambdaVersionydPNGs8mRAr1xLcPELI9rrJmEaLsc9ty2ItkSmhP0k": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GettogetherLambdaFunction"
         },
-        "CodeSha256": "ue4QIgjIz2zO8L5mv31CEORjWU//64GjFlwONC/KwpA="
+        "CodeSha256": "yv5GNIq+nRbrZnsCmnPO1SECNN9j2ZwnFxQRySf6tJQ="
       }
     },
     "JoinGetTogetherLambdaFunction": {
@@ -197,7 +198,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1571990098823-2019-10-25T07:54:58.823Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1571995730977-2019-10-25T09:28:50.977Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-joinGetTogether",
         "Handler": "src/functions/joinGetTogether.handler",
@@ -223,14 +224,14 @@
         "JoinGetTogetherLogGroup"
       ]
     },
-    "JoinGetTogetherLambdaVersionM1td9Ry3pijSoKlSM8g9sZ2MlVysr8XdXQzPgD2Q": {
+    "JoinGetTogetherLambdaVersion2GqWZFcgzpaExhQSDdaCzmAvZ9xNLbP2LINBSWHyAA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "JoinGetTogetherLambdaFunction"
         },
-        "CodeSha256": "ue4QIgjIz2zO8L5mv31CEORjWU//64GjFlwONC/KwpA="
+        "CodeSha256": "yv5GNIq+nRbrZnsCmnPO1SECNN9j2ZwnFxQRySf6tJQ="
       }
     },
     "ApiGatewayRestApi": {
@@ -369,7 +370,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1571990090440": {
+    "ApiGatewayDeployment1571995721203": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -560,6 +561,13 @@
                   "Resource": {
                     "Fn::Sub": "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/dev-gettogethers"
                   }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "ssm:GetParameters*",
+                  "Resource": {
+                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/gettogethers/dev/*"
+                  }
                 }
               ]
             }
@@ -690,19 +698,19 @@
     "NotifyOrganiserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NotifyOrganiserLambdaVersion29dsQIwpES9AXVlNBFIA9A1DKY5xlWfMo7s96sFKY3M"
+        "Ref": "NotifyOrganiserLambdaVersion6eOjsqJ7LEjnihpJVolFnl45Af6z2GhvWu5J5z7VJiQ"
       }
     },
     "GettogetherLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GettogetherLambdaVersionNOT6GpclvR86njqr4Po06SGB7mBTAv7b3zm9Tg9SpY"
+        "Ref": "GettogetherLambdaVersionydPNGs8mRAr1xLcPELI9rrJmEaLsc9ty2ItkSmhP0k"
       }
     },
     "JoinGetTogetherLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "JoinGetTogetherLambdaVersionM1td9Ry3pijSoKlSM8g9sZ2MlVysr8XdXQzPgD2Q"
+        "Ref": "JoinGetTogetherLambdaVersion2GqWZFcgzpaExhQSDdaCzmAvZ9xNLbP2LINBSWHyAA"
       }
     },
     "ServiceEndpoint": {

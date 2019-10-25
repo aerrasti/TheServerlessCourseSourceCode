@@ -17,7 +17,6 @@ provider:
   region: ${opt:region, self:custom.defaultRegion}
   stage: ${opt:region, self:custom.defaultStage}
 
-
 functions:
   notifyOrganiser:
     handler: src/functions/notifyOrganiser.handler
@@ -33,8 +32,12 @@ functions:
       - Effect: Allow
         Action: dynamodb:scan
         Resource: arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.getTogethersTableName}
+      - Effect: Allow
+        Action: ssm:GetParameters*
+        Resource: arn:aws:ssm:#{AWS::Region}:#{AWS::AccountId}:parameter/gettogethers/${self:provider.stage}/*
     environment: 
       getTogethersTableName: ${self:custom.getTogethersTableName}
+      getTogethersTablePath: /gettogethers/${self:provider.stage}/secureTableName
 
   joinGetTogether:
     handler: src/functions/joinGetTogether.handler
