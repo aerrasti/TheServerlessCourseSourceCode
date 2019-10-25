@@ -145,7 +145,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1572011915132-2019-10-25T13:58:35.132Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1572014815035-2019-10-25T14:46:55.035Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-notifyOrganiser",
         "Handler": "src/functions/notifyOrganiser.handler",
@@ -172,14 +172,14 @@
         "NotifyOrganiserLogGroup"
       ]
     },
-    "NotifyOrganiserLambdaVersionaeIwk6FIFmcQZF0BD4rayECkmhcN9nF0c6h1OjVyM": {
+    "NotifyOrganiserLambdaVersionnDXJ974sE6yFPMjfoWGHrmCNPW6hw7mEPV9VGos0w": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NotifyOrganiserLambdaFunction"
         },
-        "CodeSha256": "RPVYPvYqmdwE/q2VhUNB1ZPd4olNXAaQci0trmvCyhw="
+        "CodeSha256": "dtWXUVwjwYbhNd+yf33i2T++o8pHJL4e/lhlT82smko="
       }
     },
     "NotifyOrganiserDLQLambdaFunction": {
@@ -189,7 +189,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1572011915132-2019-10-25T13:58:35.132Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1572014815035-2019-10-25T14:46:55.035Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-notifyOrganiserDLQ",
         "Handler": "src/functions/notifyOrganiserDLQ.handler",
@@ -211,14 +211,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "NotifyOrganiserDLQLambdaVersiontgjxyQjbBIX2PLHxS8bg6i8NMMJWhhnZqISdOXAI": {
+    "NotifyOrganiserDLQLambdaVersionhApIojoZVphYdA2Y16GAYowVMBDdZnB2DOJcbEqpA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NotifyOrganiserDLQLambdaFunction"
         },
-        "CodeSha256": "RPVYPvYqmdwE/q2VhUNB1ZPd4olNXAaQci0trmvCyhw="
+        "CodeSha256": "dtWXUVwjwYbhNd+yf33i2T++o8pHJL4e/lhlT82smko="
       }
     },
     "GettogetherLambdaFunction": {
@@ -228,7 +228,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1572011915132-2019-10-25T13:58:35.132Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1572014815035-2019-10-25T14:46:55.035Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-gettogether",
         "Handler": "src/functions/getGetTogethers.handler",
@@ -243,7 +243,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "getTogethersTablePath": "/gettogethers/dev/secureTableName"
+            "getTogethersTablePath": "/gettogethers/dev/secureTableName",
+            "functionShieldToken": "dmdhbHRlc0BnbWFpbC5jb20AMEUCIGK9gu7R0H95YMZ/KUDldUNOcpoDWc1wFyWbgNZv2UUPAiEA6CqVHPIdbCsdRavMu86+T3P3I4aqeb11pPdfRwZcBUk="
           }
         },
         "TracingConfig": {
@@ -255,14 +256,14 @@
         "GettogetherLogGroup"
       ]
     },
-    "GettogetherLambdaVersionVtdUlwQn5dz7ok1FqfpPWSZ8Dht5AJiuY0xioVEo": {
+    "GettogetherLambdaVersionDEonUPY1HvSzygTUzcPp5bdGN6aloq3dchu1KqJw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GettogetherLambdaFunction"
         },
-        "CodeSha256": "RPVYPvYqmdwE/q2VhUNB1ZPd4olNXAaQci0trmvCyhw="
+        "CodeSha256": "dtWXUVwjwYbhNd+yf33i2T++o8pHJL4e/lhlT82smko="
       }
     },
     "JoinGetTogetherLambdaFunction": {
@@ -272,7 +273,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gettogether/dev/1572011915132-2019-10-25T13:58:35.132Z/gettogether.zip"
+          "S3Key": "serverless/gettogether/dev/1572014815035-2019-10-25T14:46:55.035Z/gettogether.zip"
         },
         "FunctionName": "gettogether-dev-joinGetTogether",
         "Handler": "src/functions/joinGetTogether.handler",
@@ -301,14 +302,14 @@
         "JoinGetTogetherLogGroup"
       ]
     },
-    "JoinGetTogetherLambdaVersionIYwPSkrzy0gCe7GTKZcCLWSJUdOAoxyYcgSK3kFEA": {
+    "JoinGetTogetherLambdaVersionFUYPFpu63sv7nUFwHmjbrZBklwORQ9dlVcJRARgqPM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "JoinGetTogetherLambdaFunction"
         },
-        "CodeSha256": "RPVYPvYqmdwE/q2VhUNB1ZPd4olNXAaQci0trmvCyhw="
+        "CodeSha256": "dtWXUVwjwYbhNd+yf33i2T++o8pHJL4e/lhlT82smko="
       }
     },
     "ApiGatewayRestApi": {
@@ -361,6 +362,53 @@
         }
       }
     },
+    "ApiGatewayMethodApiGetDashtogetherOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'",
+                "method.response.header.Access-Control-Allow-Credentials": "'false'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApiGetDashtogether"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
     "ApiGatewayMethodApiGetDashtogetherGet": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -373,7 +421,10 @@
           "Ref": "ApiGatewayRestApi"
         },
         "ApiKeyRequired": false,
-        "AuthorizationType": "NONE",
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "AuthorizerApiGatewayAuthorizer"
+        },
         "Integration": {
           "IntegrationHttpMethod": "POST",
           "Type": "AWS_PROXY",
@@ -402,7 +453,8 @@
           }
         },
         "MethodResponses": []
-      }
+      },
+      "DependsOn": "AuthorizerApiGatewayAuthorizer"
     },
     "ApiGatewayMethodApiGettogetherPost": {
       "Type": "AWS::ApiGateway::Method",
@@ -447,7 +499,24 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1572011891181": {
+    "AuthorizerApiGatewayAuthorizer": {
+      "Type": "AWS::ApiGateway::Authorizer",
+      "Properties": {
+        "AuthorizerResultTtlInSeconds": 300,
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "authorizer",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "Type": "COGNITO_USER_POOLS",
+        "ProviderARNs": [
+          {
+            "Fn::Sub": "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/eu-west-1_c20LHRH9A"
+          }
+        ]
+      }
+    },
+    "ApiGatewayDeployment1572014794769": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -456,6 +525,7 @@
         "StageName": "dev"
       },
       "DependsOn": [
+        "ApiGatewayMethodApiGetDashtogetherOptions",
         "ApiGatewayMethodApiGetDashtogetherGet",
         "ApiGatewayMethodApiGettogetherPost"
       ]
@@ -937,6 +1007,28 @@
           "OverrideManualConfigs": true
         }
       }
+    },
+    "CognitoUserPool": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "UserPoolName": "dev-testauthsls-user-pool",
+        "UsernameAttributes": [
+          "email"
+        ],
+        "AutoVerifiedAttributes": [
+          "email"
+        ]
+      }
+    },
+    "CognitoUserPoolClient": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "ClientName": "dev-testauthsls--user-pool-client",
+        "UserPoolId": {
+          "Ref": "CognitoUserPool"
+        },
+        "GenerateSecret": false
+      }
     }
   },
   "Outputs": {
@@ -951,25 +1043,25 @@
     "NotifyOrganiserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NotifyOrganiserLambdaVersionaeIwk6FIFmcQZF0BD4rayECkmhcN9nF0c6h1OjVyM"
+        "Ref": "NotifyOrganiserLambdaVersionnDXJ974sE6yFPMjfoWGHrmCNPW6hw7mEPV9VGos0w"
       }
     },
     "NotifyOrganiserDLQLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NotifyOrganiserDLQLambdaVersiontgjxyQjbBIX2PLHxS8bg6i8NMMJWhhnZqISdOXAI"
+        "Ref": "NotifyOrganiserDLQLambdaVersionhApIojoZVphYdA2Y16GAYowVMBDdZnB2DOJcbEqpA"
       }
     },
     "GettogetherLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GettogetherLambdaVersionVtdUlwQn5dz7ok1FqfpPWSZ8Dht5AJiuY0xioVEo"
+        "Ref": "GettogetherLambdaVersionDEonUPY1HvSzygTUzcPp5bdGN6aloq3dchu1KqJw"
       }
     },
     "JoinGetTogetherLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "JoinGetTogetherLambdaVersionIYwPSkrzy0gCe7GTKZcCLWSJUdOAoxyYcgSK3kFEA"
+        "Ref": "JoinGetTogetherLambdaVersionFUYPFpu63sv7nUFwHmjbrZBklwORQ9dlVcJRARgqPM"
       }
     },
     "ServiceEndpoint": {
