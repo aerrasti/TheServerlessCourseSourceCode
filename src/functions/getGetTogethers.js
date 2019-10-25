@@ -1,3 +1,6 @@
+const AWSXray = require("aws-xray-sdk");
+AWSXray.captureAWS(require("aws-sdk"));
+
 const AWS = require("aws-sdk");
 const middy = require('middy')
 const { ssm } = require('middy/middlewares')

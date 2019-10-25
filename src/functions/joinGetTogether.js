@@ -1,8 +1,13 @@
-const AWS = require("aws-sdk");
-const sns = new AWS.SNS();
-const chance = require("chance").Chance();
+const AWSXray = require("aws-xray-sdk");
+AWSXray.captureAWS(require("aws-sdk"));
 
-module.exports.handler = async (event, context) => {
+const chance = require("chance").Chance();
+const Log = require('@dazn/lambda-powertools-logger');
+const sns = require('@dazn/lambda-powertools-sns-client')
+const middy = require("middy");
+const correlationIds = require('@dazn/lambda-powertools-middleware-correlation-ids');
+
+const handler = async (event, context) => {
   const body = JSON.parse(event.body);
   const orderId = chance.guid();
   const getTogetherId = body.getTogetherId;
@@ -13,6 +18,10 @@ module.exports.handler = async (event, context) => {
     getTogetherId,
     userEmail
   }
+  
+  Log.info("published 'join together post' event", {
+    getTogetherId, userEmail }
+  );
 
   const notification = {
       'Message' : JSON.stringify(notificationData),
@@ -28,3 +37,6 @@ module.exports.handler = async (event, context) => {
 
   return response;
 };
+
+module.exports.handler = middy(handler)
+    .use(correlationIds({ sampleDebugLogRate: 0 }));
