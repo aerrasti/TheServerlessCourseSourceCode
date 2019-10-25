@@ -27,5 +27,5 @@ module.exports.we_invoke_get_gettogethers = () => {
 
     return mode === "http"
         ? viaHttp(`get-together`)
-        : viaHandler("getGetTogethers", {});
+        : viaHandler("getGetToxºgethers", {});
 }
